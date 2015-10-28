@@ -6,6 +6,10 @@ class UserTest < ActiveSupport::TestCase
       password: "foobar", password_confirmation: "foobar")
   end
 
+  test "has a valid factory" do
+    assert (FactoryGirl.build(:user)).valid?
+  end
+
   test "should be valid" do
     assert @user.valid?
   end
