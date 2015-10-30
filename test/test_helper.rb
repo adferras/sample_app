@@ -1,7 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require "minitest/reporters"
+require 'minitest/reporters'
+require 'minitest/stub_any_instance'
 Minitest::Reporters.use!
 
 class MiniTest::Unit::TestCase
@@ -20,7 +21,7 @@ class ActiveSupport::TestCase
 
   # Logs in a test user.
   def log_in_as(user, options = {})
-    password    = options[:password]    || 'password'
+    password    = options[:password] || 'password'
     remember_me = options[:remember_me] || '1'
     if integration_test?
       post login_path, session: { email:       user.email,
